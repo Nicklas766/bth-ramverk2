@@ -11,7 +11,7 @@ function handleError(error) {
 module.exports = {
     fetchUsers: function () {
         console.log("im started /users");
-        var encodedURI = window.encodeURI('/users');
+        var encodedURI = window.encodeURI('/api/users');
 
         return axios.get(encodedURI)
             .then(function (users) {
@@ -20,7 +20,7 @@ module.exports = {
     },
     fetchReports: function () {
         console.log("im started /report");
-        var encodedURI = window.encodeURI('/users/report');
+        var encodedURI = window.encodeURI('/api/report');
 
         return axios.get(encodedURI)
             .then(function (reports) {

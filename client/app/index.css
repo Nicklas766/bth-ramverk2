@@ -26,7 +26,8 @@ html, body {
 }
 
 .container {
-    /*background: white;*/
+    background: white;
+    color:black;
     width:100%;
     min-height:800px;
 }
@@ -44,6 +45,7 @@ footer {
     height:100px;
     display:flex;
     align-items: center;
+    font-size: 1.25em;
 }
 .header div:nth-child(2) {
     display: flex;
@@ -63,16 +65,18 @@ footer {
 /*REPORT*/
 
 .reportText {
-    width: 33%;
+    width: 50%;
     text-align: left;
 }
 .reports {
-    width: 33%;
+    width: 10%;
+    text-align:center;
 }
 
 .reports li {
     cursor:pointer;
     list-style-type: none;
+        margin-right:24px;
 }
 
 /*****************************************************************************/
@@ -82,7 +86,6 @@ footer {
     font-family: 'Passion One', cursive;
     width:100%;
     min-height:200px;
-    background:white;
 }
 .service-banner .widget {
     cursor:pointer;
@@ -91,7 +94,7 @@ footer {
     width:30%;
     margin: 3% 1.5%  3% 1.5%;
     padding:15px;
-    color:black;
+
     text-decoration:none;
 }
 .service-banner .widget h1  {

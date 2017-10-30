@@ -2,6 +2,8 @@ var React = require('react');
 var NavLink = require('react-router-dom').NavLink;
 var Link = require('react-router-dom').Link;
 
+
+
 const Header = (props) => (
     <div className='header'>
         <div style={{width:"20%"}}>

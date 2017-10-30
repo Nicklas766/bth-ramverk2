@@ -12,7 +12,20 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '1337');
+
+
+var port = 1337;
+
+if ('DBWEBB_PORT' in process.env) {
+    port = process.env.DBWEBB_PORT;
+    console.log(`DBWEBB_PORT set, using ${port}`);
+}
+else {
+    var port = normalizePort(process.env.PORT || '1337');
+    console.log("DBWEBB_PORT not set, using 1337");
+}
+
+console.log(`Server running on localhost:${port}`);
 app.set('port', port);
 
 /**

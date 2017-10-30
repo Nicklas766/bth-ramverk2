@@ -9,7 +9,7 @@ function Report(props) {
         <li
             onClick={props.onSelect.bind(null, option.id)}
             key={option.id}>
-            {option.id}
+            {option.name}
         </li>
     );
 
@@ -55,12 +55,8 @@ class Reports extends React.Component {
 
 
     render() {
-        const containerStyle = {
-            display:"flex",
-            "flexWrap": "wrap"
-        }
         return (
-            <div style={containerStyle}>
+                <div className="container" style={{width:"50%", margin:"auto", borderRadius:"0.2em"}}>
                 <h1 style={{width:"100%"}}>Mina redovisningar</h1>
                 {!this.state.loading && <Report onSelect={this.getReport} options={this.state.reports}/>}
                 <div className="reportText">
