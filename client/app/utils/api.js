@@ -9,22 +9,22 @@ function handleError(error) {
 
 
 module.exports = {
-    fetchProject: function () {
-        console.log("im started");
+    fetchUsers: function () {
+        console.log("im started /users");
         var encodedURI = window.encodeURI('/users');
-
-        return axios.get(encodedURI, {port:1337})
-            .then(function (users) {
-                return users.data;
-            });
-    },
-    fetchProjects: function (lang) {
-        console.log("im started");
-        var encodedURI = window.encodeURI('http://nicklasenvall.se/api.php/projects');
 
         return axios.get(encodedURI)
             .then(function (users) {
                 return users.data;
+            });
+    },
+    fetchReports: function () {
+        console.log("im started /report");
+        var encodedURI = window.encodeURI('/users/report');
+
+        return axios.get(encodedURI)
+            .then(function (reports) {
+                return reports.data;
             });
     }
 };

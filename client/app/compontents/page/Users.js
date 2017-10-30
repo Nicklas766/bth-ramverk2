@@ -1,5 +1,5 @@
 var React = require('react');
-var api = require('../utils/api');
+var api = require('../../utils/api');
 
 class Users extends React.Component {
     constructor (props) {
@@ -10,7 +10,7 @@ class Users extends React.Component {
     }
 
   componentDidMount() {
-      api.fetchProject()
+      api.fetchUsers()
       .then(function (users) {
           this.setState(() => ({users: users}))
         }.bind(this));
