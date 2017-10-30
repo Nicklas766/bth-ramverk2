@@ -1,52 +1,53 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo');
 
 
-html, body {
+html,
+body {
     font-family: 'Baloo', cursive;
-    color:black;
-    margin:0;
-    padding:0;
-    background:#F4F4F4;
+    color: black;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
 }
 
 
 .wrap-container {
-    margin:auto;
-    /*max-width:1100px;*/
-    width:100%;
-    text-align:center;
+    margin: auto;
+    width: 100%;
+    text-align: center;
     overflow: auto;
-    background:white;
-    color:white;
+    background: white;
+    color: white;
     display: flex;
     flex-wrap: wrap;
-    background-size:100% 100%;
-    background-attachment:fixed;
-    background-repeat:none;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: none;
 }
 
 .container {
     background: white;
-    color:black;
-    width:100%;
-    min-height:800px;
+    color: black;
+    width: 100%;
+    min-height: 800px;
 }
 
 footer {
     display: inline-block;
     width: 100%;
-    color:white;
+    color: white;
 }
 
-/*HEADER*/
+/* HEADER */
 
 .header {
-    width:100%;
-    height:100px;
-    display:flex;
+    width: 100%;
+    height: 100px;
+    display: flex;
     align-items: center;
     font-size: 1.25em;
 }
+
 .header div:nth-child(2) {
     display: flex;
     justify-content: flex-end;
@@ -54,49 +55,51 @@ footer {
 }
 
 .header a {
-    transition: .5s;
+    transition: 0.5s;
     margin-right: 24px;
-        color:white;
+    color: white;
 }
+
 .active {
     font-size: 1.25em;
 }
 
-/*REPORT*/
+/* REPORT */
 
 .reportText {
     width: 50%;
     text-align: left;
 }
+
 .reports {
     width: 10%;
-    text-align:center;
+    text-align: center;
 }
 
 .reports li {
-    cursor:pointer;
+    cursor: pointer;
     list-style-type: none;
-        margin-right:24px;
+    margin-right: 24px;
 }
 
-/*****************************************************************************/
 /* SERVICE-BANNER */
-/*****************************************************************************/
-.service-banner {
-    font-family: 'Passion One', cursive;
-    width:100%;
-    min-height:200px;
-}
-.service-banner .widget {
-    cursor:pointer;
-    box-sizing: border-box;
-    display:inline-block;
-    width:30%;
-    margin: 3% 1.5%  3% 1.5%;
-    padding:15px;
 
-    text-decoration:none;
+.service-banner {
+    font-family: 'Passion One';
+    width: 100%;
+    min-height: 200px;
 }
-.service-banner .widget h1  {
-    font-family: 'Passion One', cursive;
+
+.service-banner .widget {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 30%;
+    margin: 3% 1.5%;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.service-banner .widget h1 {
+    font-family: 'Passion One';
 }

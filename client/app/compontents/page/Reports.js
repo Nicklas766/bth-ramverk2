@@ -4,7 +4,7 @@ var Link = require('react-router-dom').Link;
 var ReactMarkdown = require('react-markdown');
 
 
-function Report(props) {
+const Report = (props) => {
     var reports = props.options.map(option =>
         <li
             onClick={props.onSelect.bind(null, option.id)}
