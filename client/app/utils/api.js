@@ -18,9 +18,9 @@ module.exports = {
                 return users.data;
             });
     },
-    fetchReports: function () {
+    fetchReports: function (id = "") {
         console.log("im started /report");
-        var encodedURI = window.encodeURI('/api/report');
+        var encodedURI = window.encodeURI('/api/report/' + id);
 
         return axios.get(encodedURI)
             .then(function (reports) {

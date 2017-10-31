@@ -6,13 +6,13 @@ var Link = require('react-router-dom').Link;
 
 const Header = (props) => (
     <div className='header'>
-        <div style={{width:"20%"}}>
+        <div style={{ width: "20%" }}>
             <NavLink exact activeClassName='active' to='/'>
                 <img src="images/home.png" />
             </NavLink>
         </div>
 
-        <div style={{width:"70%"}}>
+        <div style={{ width: "70%" }}>
 
             <NavLink exact activeClassName='active' to='/'>
                 Hem
@@ -40,12 +40,12 @@ const Footer = (props) => (
 class WrappedApp extends React.Component {
     render() {
         return (
-            <div className='wrap-container' style={{backgroundImage:"url('images/notebook.jpg')"}}>
+            <div className='wrap-container' style={{ backgroundImage: "url('images/notebook.jpg')" }}>
                 <Header />
-                    {this.props.children}
+                {this.props.children}
                 <Footer />
             </div>
-        )
+        );
     }
 }
 
