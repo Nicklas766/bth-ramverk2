@@ -60,8 +60,8 @@ jag bara för att prova. Detta betyder att nästa gång så vet jag hur jag kan 
 i min docker-image. Sedan så la jag in min egna image i min "docker-compose.yml", så jag kunde se så det verkligen fungerar.
 
 Jag kopplade även ihop mitt Docker repo med mitt egna Github repo, så den startar min Dockerfile, vid
-en git push. Tyvärr så hittade jag inte en badge för detta, verkade som man kunde skapa en egen på något
-sätt, men jag hoppade det. Men om man tittar på committen så ska man kunna se "docker passed" eller "docker failed".
+en git push. Tyvärr så hittade jag inte en badge för detta, det verkade som man kunde skapa en egen på något
+sätt och det gjorde jag, men den är ej kopplad till om den lyckas eller ej. Däremot om man tittar på committen så ska man kunna se "docker passed" eller "docker failed".
 
 När jag byggde min image så gjorde jag ungefär som jag bifogat nedan. Men egentligen så kan man skippa sista delen
 och gå in i kitematic-programmet.
