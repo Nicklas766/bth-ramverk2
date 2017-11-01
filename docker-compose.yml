@@ -1,0 +1,46 @@
+version: "2"
+services:
+  node8:
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - DBWEBB_PORT=8081
+    volumes:
+      - ./:/home/node/app
+    ports:
+        - "8081:8081"
+    command: "npm start"
+
+  node6:
+    image: "node:6"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - DBWEBB_PORT=8082
+    volumes:
+      - ./:/home/node/app
+    ports:
+        - "8082:8082"
+    command: "npm start"
+
+  node4:
+    image: "node:4"
+    user: "node"
+    ports:
+        - "8083:8083"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - DBWEBB_PORT=8083
+    volumes:
+      - ./:/home/node/app
+    command: "npm start"
+
+
+  nicklasnode:
+    image: "nicklas766/my_image"
+    ports:
+        - "1336:1336"
