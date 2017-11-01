@@ -90,6 +90,9 @@ eller hur det är tänkt att fungera. Nu har jag mer tid över och tänker spend
 pilla lite på min app, så den kan komma några nya commits.
 
 http://162.243.185.158/
+
 https://cloud.docker.com/swarm/nicklas766/repository/docker/nicklas766/my_image/general
+
 http://www.student.bth.se/~nien16/dbwebb-kurser/ramverk2/me/
+
 https://github.com/Nicklas766/bth-ramverk2
