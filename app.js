@@ -11,8 +11,8 @@ var api = require('./routes/api');
 
 var app = express();
 
-// uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'images/monitor.png')));
+// uncomment after placing your favicon in /client/public
+app.use(favicon(path.join(__dirname, 'client/public/images', 'monitor.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -22,10 +22,10 @@ app.use(cookieParser());
 app.use('/api', api);
 
 /* Routes for client. */
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/about', express.static(path.join(__dirname, 'public')));
-app.use('/reports', express.static(path.join(__dirname, 'public')));
-app.use('/users', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/public')));
+app.use('/about', express.static(path.join(__dirname, 'client/public')));
+app.use('/reports', express.static(path.join(__dirname, 'client/public')));
+app.use('/users', express.static(path.join(__dirname, 'client/public')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,7 +46,7 @@ app.use(function(err, req, res, next) {
 
     /* use clients 404 error page */
     res.status(err.status || 500);
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/client/public/index.html');
 });
 
 module.exports = app;

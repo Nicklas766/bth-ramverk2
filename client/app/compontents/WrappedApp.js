@@ -40,7 +40,7 @@ const Footer = (props) => (
 class WrappedApp extends React.Component {
     render() {
         return (
-            <div className='wrap-container' style={{ backgroundImage: "url('images/notebook.jpg')" }}>
+            <div className='wrap-container' style={{ backgroundImage: "url('../images/notebook.jpg')" }}>
                 <Header />
                 {this.props.children}
                 <Footer />
