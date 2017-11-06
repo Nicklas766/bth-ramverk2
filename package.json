@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "echo hello world test"
+    "test": "nyc --reporter=html --reporter=text mocha test/test.js"
   },
   "author": "Nicklas Envall",
   "license": "MIT",
@@ -25,12 +25,12 @@
     "eslint": "^4.10.0",
     "eslint-plugin-react": "^7.4.0",
     "html-minifier": "^3.5.6",
-    "htmlhint": "^0.9.13",
     "js-yaml": "^3.10.0",
     "jsonlint": "^1.6.2",
     "mocha": "^4.0.1",
     "nyc": "^11.2.1",
     "stylelint": "^8.2.0",
+    "supertest": "^3.0.0",
     "uglify-js": "^3.1.6"
   }
 }
