@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "nyc --reporter=html --reporter=text mocha test/test.js",
-    "test-scrutinizer": "nyc --all --reporter=clover mocha test/test.js"
+    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "author": "Nicklas Envall",
   "license": "MIT",
