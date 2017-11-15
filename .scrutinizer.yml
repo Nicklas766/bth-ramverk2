@@ -1,11 +1,11 @@
 filter:
     excluded_paths: [client/public/*]
 
-build:    
+build:
     tests:
         override:
             -
-                command: 'nyc --reporter=clover mocha test/test.js'
+                command: 'npm run coverage-scrut'
                 coverage:
                     file: 'coverage/clover.xml'
                     format: 'clover'
