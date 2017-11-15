@@ -1,16 +1,18 @@
 checks:
     javascript: true
 
+filter:
+    excluded_paths: [client/public/*]
+
 build:
     dependencies:
-        #before:
-            #- npm install istanbul   # or add it as part of your package.json
-
+        before:
+            - npm install
+            
     tests:
         override:
             -
-                #command: 'istanbul cover --report clover test.js'
-                command: 'npm run test-scrutinizer'
+                command: 'nyc --reporter=clover mocha test/test.js'
                 coverage:
-                    file: 'build/coverage/clover.xml'
+                    file: 'coverage/clover.xml'
                     format: 'clover'
