@@ -60,6 +60,7 @@ class Reports extends React.Component {
             margin: "auto",
             borderRadius: "0.2em"
         };
+
         return (
             <div className="container" style={containerStyle}>
                 <h1 style={{width: "100%"}}>Mina redovisningar</h1>

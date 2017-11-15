@@ -120,7 +120,7 @@ check: check-tools-js #check-tools-bash check-tools-php
 
 # target: test               - Run all tests.
 .PHONY: test
-test: mocha stylelint eslint jsunittest
+test: mocha stylelint eslint
 	@$(call HELPTEXT,$@)
 	[ ! -f composer.json ] || composer validate
 
@@ -261,17 +261,6 @@ eslint-fix:
 	@$(call HELPTEXT,$@)
 	[ ! -f .eslintrc.json ] || $(ESLINT) --fix .
 
-
-
-# target: jsunittest         - JavaScript unit tests.
-.PHONY: jsunittest
-jsunittest:
-	@$(call HELPTEXT,$@)
-ifneq ($(wildcard .nycrc),)
-	[ ! -d test ] || $(NYC) $(MOCHA) --reporter dot 'test/**/*.js'
-else
-	[ ! -d test ] || $(MOCHA) --reporter dot 'test/**/*.js'
-endif
 
 
 
