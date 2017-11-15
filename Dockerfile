@@ -9,7 +9,6 @@ COPY package.json .
 # COPY package.json package-lock.json ./
 
 RUN npm install
-RUN npm test
 ENV DBWEBB_PORT=1336
 
 # Bundle app source
