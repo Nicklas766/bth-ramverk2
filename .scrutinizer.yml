@@ -1,14 +1,7 @@
-checks:
-    javascript: true
-
 filter:
     excluded_paths: [client/public/*]
 
-build:
-    dependencies:
-        before:
-            - npm install
-            
+build:    
     tests:
         override:
             -
