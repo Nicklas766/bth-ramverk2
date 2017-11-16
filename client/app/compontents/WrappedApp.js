@@ -25,6 +25,10 @@ const Header = (props) => (
             <NavLink activeClassName='active' to='/reports'>
                 Redovisningar
             </NavLink>
+
+            <NavLink activeClassName='active' to='/demo'>
+                Demo
+            </NavLink>
         </div>
     </div>
 );

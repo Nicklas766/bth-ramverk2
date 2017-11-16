@@ -13,7 +13,9 @@ var WrappedApp = require('./WrappedApp');
 var Home = require('./page/Home');
 var About = require('./page/About');
 var Reports = require('./page/Reports');
+var Demo = require('./page/Demo');
 var Users = require('./page/Users');
+
 
 class App extends React.Component {
     render() {
@@ -24,6 +26,7 @@ class App extends React.Component {
                         <Route exact path='/' component={Home} />
                         <Route exact path='/about' component={About} />
                         <Route exact path='/reports' component={Reports} />
+                        <Route exact path='/demo' component={Demo} />
                         <Route exact path='/users' component={Users} />
                         <Route render={() => <div className="container" style={{background: "none", color: "white"}}><h1>404 not found</h1></div>} />
                     </Switch>
