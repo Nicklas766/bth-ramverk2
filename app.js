@@ -27,6 +27,7 @@ app.use('/about', express.static(path.join(__dirname, 'client/public')));
 app.use('/reports', express.static(path.join(__dirname, 'client/public')));
 app.use('/users', express.static(path.join(__dirname, 'client/public')));
 app.use('/demo', express.static(path.join(__dirname, 'client/public')));
+app.use('/chat', express.static(path.join(__dirname, 'client/public')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,6 +37,8 @@ app.use(function(req, res, next) {
 
     next(err);
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
