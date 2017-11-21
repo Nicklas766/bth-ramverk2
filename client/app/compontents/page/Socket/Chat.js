@@ -80,7 +80,8 @@ class Chat extends React.Component {
         );
 
         const len = messages.length;
-        const amount = len >= 5 ? 5 : 0;
+        const amount = len >= 5 ? 5 : len;
+        console.log(amount);
         const slicedMessages = !showAll ? messages.slice(len - amount, len) : messages;
         return (
             <div>
