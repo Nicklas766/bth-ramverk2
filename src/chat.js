@@ -81,12 +81,12 @@ const socketChat = (server) => {
     this.messages = [];
     this.io.on('connection', socket => {
         console.log("New client connected with id : " + socket.id);
-        console.log("USERS: ", this.users);
         setupSocket(socket);
         createUser(socket);
         sendMessage(socket);
         isTyping(socket);
         disconnect(socket);
+        console.log("USERS: ", this.users);
         console.log(this.users.length + " clients are connected");
     });
 };

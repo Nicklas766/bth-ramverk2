@@ -40,6 +40,12 @@ class Demo extends React.Component {
                             </ul>
                         </div>
                     </ClickShow>
+                    <ClickShow style={{textAlign: "left"}}title={"Realtidsprogrammering"}>
+                        <div style={{textAlign: "left"}}>
+                            <p> Appen kommer troligtvis att använda Socket.io som jag gör nu, då det fungerar riktigt smidigt</p>
+                            <p> Kika gärna i mitt github repo på /src/chat.js för exempel hur det kan se ut.</p>
+                        </div>
+                    </ClickShow>
                 </div>
             </div>
         );

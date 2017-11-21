@@ -1,6 +1,6 @@
 var React = require('react');
 import io from 'socket.io-client';
-import Chat from './Socket/Chat'
+import Chat from '../Chat'
 
 const Users = (props) => {
     var onlineUsers = props.users.map(user => <li key={user.id}>{user.name}</li>);

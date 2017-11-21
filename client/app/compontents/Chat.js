@@ -26,6 +26,7 @@ class Chat extends React.Component {
         this.state = {
           socket: this.props.socket,
           messages: [],
+          text: '',
           users: this.props.users,
           showAll: false
       };
@@ -42,16 +43,14 @@ class Chat extends React.Component {
     componentDidMount() {
         const {socket} = this.state;
         socket.on('update messages', (messages) => {
-            this.setState({
-                messages: messages,
-                text: ''
-            });
+            this.setState({messages: messages});
         });
         socket.emit('update messages');
     }
 
     sendMessage() {
         this.state.socket.emit('send message', this.state.text);
+        this.setState({text: ''});
     }
 
     showAll() {
