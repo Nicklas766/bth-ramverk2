@@ -1,38 +1,45 @@
-
 const io = require('socket.io');
 
 
 const setupSocket = (socket) => {
-    this.users.push({id: socket.id, name: `guest#${this.users.length}`, typing: false});
+    this.users.push({id: socket.id, name: `guest${this.users.length}`, typing: false});
     this.io.emit('get users', this.users);
 };
 
+const getUser = (id) => this.users.filter(user => id == user.id)[0];
 /**
 * Updates current user-obj (based on this.socket), then makes sure all the clients updates the users
 * @param {object} obj - object keys & values for user
 *
 */
-const updateUser = (obj) => {
+const updateUser = (obj, socket) => {
     this.users = this.users.map(user =>
-         this.socket.id == user.id ? Object.assign(user, obj) : user);
+    socket.id == user.id ? Object.assign(user, obj) : user);
     this.io.emit('get users', this.users);
 };
 
 /**
-* creates message
+* Sends message and makes sure user isn't typing anymore
 */
-// const createMessage = (obj) => {
-//     const user = this.users.filter(user => this.socket.id !== user.id)[0];
-//     this.messages.push({text: message, nick: user.name});
-// };
+const sendMessage = (socket) => {
+    socket.on('send message', (text) => {
+        this.messages.push({name: getUser(socket.id).name, text: text});
+        this.io.emit('update messages', this.messages);
+        updateUser({typing: false}, socket);
+    });
+    socket.on('update messages', () => {
+        this.io.emit('update messages', this.messages);
+    });
+};
 
-//SKAPA TESTER
+
 /**
 * Updates guest socket to a real name
 */
 const createUser = (socket) => {
     socket.on('new user', (name) => {
-        updateUser({ name: name });
+        updateUser({ name: name }, socket);
+        this.messages.push({text: `${name} has joined the server`, name: "server"});
     });
 };
 
@@ -41,21 +48,11 @@ const createUser = (socket) => {
 */
 const isTyping = (socket) => {
     socket.on('start typing', () => {
-        updateUser({typing: true});
+        updateUser({typing: true}, socket);
     });
 
     socket.on('stop typing', () => {
-        updateUser({typing: false});
-    });
-};
-
-/**
-* Sends message and makes sure user isn't typing anymore
-*/
-const sendMessage = (socket) => {
-    socket.on('send message', (text) => {
-        this.io.emit('change message', text);
-        updateUser({typing: false});
+        updateUser({typing: false}, socket);
     });
 };
 
@@ -64,9 +61,13 @@ const sendMessage = (socket) => {
 */
 const disconnect = (socket) => {
     socket.on('disconnect', () => {
-        this.users = this.users.filter(user => socket.id != user.id);
         console.log(socket.id + ' disconnected');
+
+        this.messages.push({text: `${getUser(socket.id).name} has disconnected`, name: "server"});
+        this.users = this.users.filter(user => socket.id != user.id);
+
         this.io.emit('get users', this.users);
+        this.io.emit('update messages', this.messages);
     });
 };
 
@@ -76,11 +77,11 @@ const disconnect = (socket) => {
 */
 const socketChat = (server) => {
     this.io = new io(server);
-    this.users = []; // {id: socket.id, name: 'name', typing: false}
+    this.users = [{id: "server", name: 'server', typing: false}];
     this.messages = [];
     this.io.on('connection', socket => {
-        console.log('New client connected');
-        this.socket = socket; // incase we dont want to send a socket parameter
+        console.log("New client connected with id : " + socket.id);
+        console.log("USERS: ", this.users);
         setupSocket(socket);
         createUser(socket);
         sendMessage(socket);

@@ -19,8 +19,6 @@ import ClickShow from '../../client/app/compontents/ClickShow.js';
 var assert = require('assert');
 
 
-
-
 // console.log(wrapper.debug());
 
 describe('<Home />', () => {

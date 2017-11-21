@@ -1,11 +1,12 @@
 var React = require('react');
-import socketIOClient from 'socket.io-client';
+import io from 'socket.io-client';
 import Chat from './Socket/Chat'
 
 const Users = (props) => {
     var onlineUsers = props.users.map(user => <li key={user.id}>{user.name}</li>);
     return (
-        <ul>
+        <ul style={{width:"15%"}}>
+            <h2>online</h2>
             {onlineUsers}
         </ul>
     );
@@ -14,12 +15,11 @@ const Users = (props) => {
 class Connect extends React.Component {
     constructor(props) {
         super(props);
-        const socket = socketIOClient("http://localhost:1337");
         this.state = {
-          socket: socket,
+          socket: io(),
           chat: false,
           name: "",
-          users: [] //object {typing:false, posts:2}
+          users: [] // {id: socket.id, name: 'name', typing: false}
       };
 
       // Bind "this"
@@ -28,15 +28,17 @@ class Connect extends React.Component {
     }
 
     componentDidMount() {
-        const socket = this.state.socket;
-        socket.on('get users', (users) => {
-            console.log(users);
+        this.state.socket.on('get users', (users) => {
             this.setState({users: users});
         });
     }
 
+    componentWillUnmount() {
+        this.state.socket.close();
+    }
+
     joinChat() {
-      if (this.state.users.map(user => user.name).includes(this.state.name)) {
+      if (this.state.users.map(user => user.name).includes(this.state.name) || this.state.name == "") {
           return false;
       }
       this.setState({chat: true});
@@ -49,19 +51,30 @@ class Connect extends React.Component {
 
     render() {
         return (
-            <div style={{width: "50%", margin: "auto"}} className="container">
+            <div style={{width: "50%", margin: "auto", display: "flex"}} className="container">
+
                 <Users users={this.state.users}/>
 
-                {!this.state.chat &&
+                <div className="reportText">
+                    {!this.state.chat &&
                     <div>
-                        <input name={"name"} type="text"
-                        value={this.state.name} placeholder={"Your name"}
-                        onChange={this.handleInputChange} style={{width:"100%"}}/>
+                        <h2> Hello! Create a name and join the chat. </h2>
+                        <input name={"name"}
+                               type="text"
+                               value={this.state.name}
+                               placeholder={"Your name"}
+                               onChange={this.handleInputChange}
+                               style={{width:"100%"}}/>
                         <button onClick={this.joinChat}>Join chat</button>
-                    </div>
-                }
+                    </div>}
 
-                {this.state.chat && <Chat users={this.state.users} user={this.state.name} socket={this.state.socket}/>}
+                    {this.state.chat &&
+                        <div>
+                            <Chat users={this.state.users}
+                                  user={this.state.name}
+                                  socket={this.state.socket}/>
+                        </div>}
+                </div>
             </div>
         );
     }
