@@ -12,6 +12,11 @@ This is my website for the course [ramverk2](https://dbwebb.se/kurser/ramverk2) 
 
 Furthermore I use express.js for the server and React for client.
 
+For the database I use MongoDB. Docker is used to setup development for mongodb
+and server.
+
+For realtime I use socket.io.
+
 ## Setup
 
 You can setup your own very quickly, just do the following,

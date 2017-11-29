@@ -14,8 +14,14 @@ var Home = require('./page/Home');
 var About = require('./page/About');
 var Reports = require('./page/Reports');
 var Demo = require('./page/Demo');
-var Connect = require('./page/Connect');
 var Users = require('./page/Users');
+
+// Realtime chat
+var Connect = require('./page/Connect');
+
+//CRUD mongodb
+var Crud = require('./page/Crud');
+
 
 
 class App extends React.Component {
@@ -29,6 +35,7 @@ class App extends React.Component {
                         <Route exact path='/reports' component={Reports} />
                         <Route exact path='/demo' component={Demo} />
                         <Route exact path='/chat' component={Connect} />
+                        <Route exact path='/crud' component={Crud} />
                         <Route exact path='/users' component={Users} />
                         <Route render={() => <div className="container" style={{background: "none", color: "white"}}><h1>404 not found</h1></div>} />
                     </Switch>

@@ -2,7 +2,18 @@ var React = require('react');
 var NavLink = require('react-router-dom').NavLink;
 var Link = require('react-router-dom').Link;
 
-
+const Navbar = (props) => {
+    const navbar = props.menu.map(choice =>
+        <NavLink key={choice.to} exact activeClassName='active' to={choice.to}>
+            {choice.text}
+        </NavLink>
+    )
+    return (
+        <div style={{ width: "70%" }}>
+            {navbar}
+        </div>
+    )
+}
 
 const Header = (props) => (
     <div className='header'>
@@ -11,29 +22,15 @@ const Header = (props) => (
                 <img src="images/home.png" />
             </NavLink>
         </div>
+        <Navbar menu={[
+            {text: "Hem",           to: "/"},
+            {text: "Om",            to: "/about"},
+            {text: "Redovisningar", to: "/reports"},
+            {text: "Demo",          to: "/demo"},
+            {text: "Chat",          to: "/chat"},
+            {text: "CRUD",          to: "/crud"},
 
-        <div style={{ width: "70%" }}>
-
-            <NavLink exact activeClassName='active' to='/'>
-                Hem
-            </NavLink>
-
-            <NavLink activeClassName='active' to='/about'>
-                Om
-            </NavLink>
-
-            <NavLink activeClassName='active' to='/reports'>
-                Redovisningar
-            </NavLink>
-
-            <NavLink activeClassName='active' to='/demo'>
-                Demo
-            </NavLink>
-
-            <NavLink activeClassName='active' to='/chat'>
-                Chat
-            </NavLink>
-        </div>
+        ]}/>
     </div>
 );
 

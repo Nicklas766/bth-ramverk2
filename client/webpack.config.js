@@ -4,7 +4,7 @@ var webpack = require('webpack');
 
 // module.exports
 var config = {
-    entry: './app/index.js',
+    entry: ['babel-polyfill', './app/index.js'],
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'index_bundle.js',
@@ -24,7 +24,7 @@ var config = {
     devServer: {
         //   historyApiFallback: true,
         proxy: {
-            "**": "http://localhost:1337"
+            "**": "http://192.168.99.100:1337"
         }
     },
     plugins: [new HtmlWebpackPlugin({template: 'app/index.html'})]

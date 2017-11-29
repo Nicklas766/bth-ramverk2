@@ -9,12 +9,9 @@ class Users extends React.Component {
         };
     }
 
-    componentDidMount() {
-        api.fetchUsers()
-            .then(function (users) {
-                this.setState(() => ({users: users}));
-            }.bind(this));
-        console.log(this.state.users);
+    async componentDidMount() {
+        const users = await api.fetchUsers();
+        this.setState({users: users});
     }
 
     render() {

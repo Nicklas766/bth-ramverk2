@@ -7,25 +7,31 @@ function handleError(error) {
     return null;
 }
 
-
 module.exports = {
-    fetchUsers: function () {
-        console.log("im started /users");
-        var encodedURI = window.encodeURI('/api/users');
-
-        return axios.get(encodedURI)
-            .then(function (users) {
-                return users.data;
-            });
+    fetchUsers: async function () {
+        const data = await axios.get("/api/users");
+        return data.data;
     },
-    fetchReports: function (id = "") {
-        console.log("im started /report");
-        var encodedURI = window.encodeURI('/api/report/' + id);
+    fetchReports: async function (id = "") {
+        const reports = await axios.get("/api/report/" + id);
+        return reports.data;
+    },
 
-        return axios.get(encodedURI)
-            .then(function (reports) {
-                return reports.data;
-            });
+    // mongoDB
+    fetchPeople: async function () {
+        const data = await axios.get("/mongodb/get");
+        return data.data;
+    },
+    postPeople: function (params) {
+        axios.post("/mongodb/insert", params);
+        console.log(params);
+
+    },
+    deletePerson: function (id) {
+        axios.post("/mongodb/delete", {id: id});
+    },
+    updatePerson: function (params) {
+        axios.post("/mongodb/update", params);
     }
 };
 
