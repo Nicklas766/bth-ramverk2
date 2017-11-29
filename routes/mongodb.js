@@ -16,10 +16,10 @@ var router = express.Router();
 router.get("/get", async (req, res) => {
     try {
         const data = await fetchArtists(dsn);
+
         console.log(data);
         res.json(data);
-    }
-    catch (err) {
+    }    catch (err) {
         console.log(err);
         res.json(err);
     }
@@ -32,11 +32,12 @@ router.post("/insert", async (req, res) => {
         wikipedia: req.body.wikipedia,
         youtube: req.body.youtube
     };
+
     try {
         const data = await insertArtist(dsn, item);
+
         res.json(data);
-    }
-    catch (err) {
+    }    catch (err) {
         console.log(err);
         res.json(err);
     }
@@ -49,11 +50,12 @@ router.post("/update", async (req, res) => {
         wikipedia: req.body.wikipedia,
         youtube: req.body.youtube
     };
+
     try {
         const data = await updateArtist(dsn, req.body.id, item);
+
         res.json(data);
-    }
-    catch (err) {
+    }    catch (err) {
         console.log(err);
         res.json(err);
     }
@@ -62,11 +64,11 @@ router.post("/update", async (req, res) => {
 // Inserts a JSON object to our list
 router.post("/delete", async (req, res) => {
     try {
-        console.log("deleted" + req.body.id)
+        console.log("deleted" + req.body.id);
         const data = await deleteArtist(dsn, req.body.id);
+
         res.json(data);
-    }
-    catch (err) {
+    }    catch (err) {
         console.log(err);
         res.json(err);
     }
@@ -94,7 +96,7 @@ router.post("/delete", async (req, res) => {
 async function insertArtist(dsn, item) {
     const db  = await mongo.connect(dsn);
     const col = await db.collection('artists');
-    const res = await col.insertOne(item)
+    const res = await col.insertOne(item);
 
     await db.close();
 
@@ -114,10 +116,10 @@ async function insertArtist(dsn, item) {
  * @return {Promise<array>} The resultset as an array.
  */
 
-async function updateArtist(dsn, id , item) {
+async function updateArtist(dsn, id, item) {
     const db  = await mongo.connect(dsn);
     const col = await db.collection('artists');
-    const res = await col.update({  _id : ObjectId(id) }, { $set: item });
+    const res = await col.update({  _id: ObjectId(id) }, { $set: item });
 
     await db.close();
 
@@ -161,7 +163,7 @@ async function fetchArtists(dsn) {
 async function deleteArtist(dsn, id) {
     const db  = await mongo.connect(dsn);
     const col = await db.collection('artists');
-    const res = await col.remove({ _id : ObjectId(id) });
+    const res = await col.remove({ _id: ObjectId(id) });
 
     await db.close();
     return res;
