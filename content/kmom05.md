@@ -47,7 +47,8 @@ En asynkronsk funktion kommer alltid returnera ett löfte (promise). När vi lä
 "async" innan funktionen så får vi använda "await".
 
 
-
+det tog lång tid, men jag lyckades få igång mitt mongodb-test på travis också,
+detta känns riktigt bra.
 
 kunde ej tro mina ögon när jag insåg att jag fick till det med mongoDB-testerna
 

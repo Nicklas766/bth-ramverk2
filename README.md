@@ -10,24 +10,61 @@
 
 This is my website for the course [ramverk2](https://dbwebb.se/kurser/ramverk2) at Blekinge Tekniska Högskola.
 
-Furthermore I use express.js for the server and React for client.
+This project uses the following,
 
-For the database I use MongoDB. Docker is used to setup development for mongodb
-and server.
+* Express.js (server)
+* React      (client)
+* MongoDB
+* Socket.io
+* Mocha
+* Docker
 
-For realtime I use socket.io.
+For more dependencies please checkout the `package.json`
 
-## Setup
 
-You can setup your own very quickly, just do the following,
+## Basic setup
 
 ```
 $ git clone https://github.com/Nicklas766/bth-ramverk2.git
 $ cd bth-ramverk2
+```
+
+## Recommended setup & testing
+
+**The easiest way to setup your own is to use Docker**:
+
+```
+// This will setup in the following order, mongodb, express-server, test.
+$ docker-compose -up -d
+```
+
+**Only testing**:
+```
+// This will only start the test
+$ docker-compose -up test
+```
+
+
+**Note**: If you want to use another port, you can easily edit the ports in
+`docker-compose.yml` to your preference.
+
+**Note**: MongoDB and express-server needs to be running.
+
+
+## Setup & testing without Docker (Not recommended)
+
+**You can setup your own very quickly, just do the following**:
+
+```
 $ npm install
 $ npm start
 ```
 
-## testing
+**Note**: You will need to install [MongoDB](https://docs.mongodb.com/manual/installation/) on your own. Then make sure
+the database is started before doing `npm start`
 
-You'll need to use testing
+**Testing**:
+
+```
+$ npm test
+```
