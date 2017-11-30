@@ -1,5 +1,4 @@
 var React = require('react');
-var PropTypes = require('prop-types');
 
 class ClickShow extends React.Component {
     constructor(props) {

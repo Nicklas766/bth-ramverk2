@@ -14,4 +14,4 @@ git:
     submodules: false
 
 script:
-    - npm test
+    - make test
