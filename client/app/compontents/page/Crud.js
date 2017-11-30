@@ -36,7 +36,6 @@ class Crud extends React.Component {
 
     async fetchPeople() {
         const people = await api.fetchPeople();
-        console.log(people);
         this.setState({
             people: people,
             loading: false
@@ -44,20 +43,17 @@ class Crud extends React.Component {
     }
 
     async createPerson() {
-        await api.postPeople({
+        const people = await api.postPeople({
             name: this.state.name,
             wikipedia: this.state.wikipedia,
             youtube: this.state.youtube
         });
-        this.setState({});
-        await this.fetchPeople();
+        this.setState({ people: people });
     }
 
     async deletePerson(id) {
-         console.log(id);
-         await api.deletePerson(id);
-         this.setState({});
-         await this.fetchPeople();
+         const people = await api.deletePerson(id);
+         this.setState({ people: people });
     }
 
     handleInputChange(event) {

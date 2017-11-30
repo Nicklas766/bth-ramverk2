@@ -22,13 +22,16 @@ module.exports = {
         const data = await axios.get("/mongodb/get");
         return data.data;
     },
-    postPeople: function (params) {
-        axios.post("/mongodb/insert", params);
-        console.log(params);
+    postPeople: async function (params) {
+        console.log("IM STARTED")
+        const data = await axios.post("/mongodb/insert", params)
+        return data.data;
 
     },
-    deletePerson: function (id) {
-        axios.post("/mongodb/delete", {id: id});
+    deletePerson: async function (id) {
+        const data = await axios.post("/mongodb/delete", {id: id})
+        return data.data;
+
     },
     updatePerson: function (params) {
         axios.post("/mongodb/update", params);

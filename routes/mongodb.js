@@ -4,20 +4,20 @@
 "use strict";
 
 // MongoDB
-const mongo = require("mongodb").MongoClient;
 const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/people";
-var ObjectId = require('mongodb').ObjectID;
 // Express server
 const express = require("express");
 var router = express.Router();
+
+// Connect to database with mongoConnect
+const db = require('../src/MongoConnect.js').mongoConnect(dsn, 'artists');
 
 
 // Return a JSON object with list of all documents within the collection.
 router.get("/get", async (req, res) => {
     try {
-        const data = await fetchArtists(dsn);
+        var data = await db.fetch();
 
-        console.log(data);
         res.json(data);
     }    catch (err) {
         console.log(err);
@@ -25,7 +25,7 @@ router.get("/get", async (req, res) => {
     }
 });
 
-// Inserts a JSON object to our list
+// Create an object and return new list of objects
 router.post("/insert", async (req, res) => {
     var item = {
         name: req.body.name,
@@ -34,7 +34,8 @@ router.post("/insert", async (req, res) => {
     };
 
     try {
-        const data = await insertArtist(dsn, item);
+        await db.insert(item);
+        const data = await db.fetch();
 
         res.json(data);
     }    catch (err) {
@@ -43,7 +44,7 @@ router.post("/insert", async (req, res) => {
     }
 });
 
-// Inserts a JSON object to our list
+// Update an object in collection
 router.post("/update", async (req, res) => {
     var item = {
         name: req.body.name,
@@ -52,7 +53,8 @@ router.post("/update", async (req, res) => {
     };
 
     try {
-        const data = await updateArtist(dsn, req.body.id, item);
+        await db.update(req.body.id, item);
+        const data = await db.fetch();
 
         res.json(data);
     }    catch (err) {
@@ -61,11 +63,11 @@ router.post("/update", async (req, res) => {
     }
 });
 
-// Inserts a JSON object to our list
+// Delete an object in the collection and return new
 router.post("/delete", async (req, res) => {
     try {
-        console.log("deleted" + req.body.id);
-        const data = await deleteArtist(dsn, req.body.id);
+        await db.remove(req.body.id);
+        const data = await db.fetch();
 
         res.json(data);
     }    catch (err) {
@@ -74,99 +76,7 @@ router.post("/delete", async (req, res) => {
     }
 });
 
-// // Startup server and liten on port
-// router.listen(port, () => {
-//     console.log(`Server is listening on ${port}`);
-//     console.log(`DSN is: ${dsn}`);
-// });
-
-/**
- * Insert an artist to the "artist-data" collection
- *
- * @async
- *
- * @param {string} dsn        DSN to connect to database.
- * @param {object} item       JSON-object of artist attributes
- *
- * @throws Error when database operation fails.
- *
- * @return {Promise<array>} The resultset as an array.
- */
-
-async function insertArtist(dsn, item) {
-    const db  = await mongo.connect(dsn);
-    const col = await db.collection('artists');
-    const res = await col.insertOne(item);
-
-    await db.close();
-
-    return res;
-}
-
-/**
- * Insert an artist to the "artist-data" collection
- *
- * @async
- *
- * @param {string} dsn        DSN to connect to database.
- * @param {object} item       JSON-object of artist attributes
- *
- * @throws Error when database operation fails.
- *
- * @return {Promise<array>} The resultset as an array.
- */
-
-async function updateArtist(dsn, id, item) {
-    const db  = await mongo.connect(dsn);
-    const col = await db.collection('artists');
-    const res = await col.update({  _id: ObjectId(id) }, { $set: item });
-
-    await db.close();
-
-    return res;
-}
-
-/**
- * Gets all the artists
- *
- * @async
- *
- * @param {string} dsn        DSN to connect to database.
- *
- * @throws Error when database operation fails.
- *
- * @return {Promise<array>} The resultset as an array.
- */
-
-async function fetchArtists(dsn) {
-    const db  = await mongo.connect(dsn);
-    const col = await db.collection('artists');
-    const res = await col.find({}).toArray();
-
-    await db.close();
-    return res;
-}
 
 
-/**
- * Gets all the artists
- *
- * @async
- *
- * @param {string} dsn        DSN to connect to database.
- *
- * @throws Error when database operation fails.
- *
- * @return {Promise<array>} The resultset as an array.
- */
-
-async function deleteArtist(dsn, id) {
-    const db  = await mongo.connect(dsn);
-    const col = await db.collection('artists');
-    const res = await col.remove({ _id: ObjectId(id) });
-
-    await db.close();
-    return res;
-}
 
 module.exports = router;

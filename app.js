@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 // var index = require('./routes/index');
 var api = require('./routes/api');
-// var mongodb = require('./routes/mongodb');
+var mongodb = require('./routes/mongodb');
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 /* api routes */
 app.use('/api', api);
-// app.use('/mongodb', mongodb);
+app.use('/mongodb', mongodb);
 
 /* Routes for client. */
 app.use(express.static(path.join(__dirname, 'client/public')));
