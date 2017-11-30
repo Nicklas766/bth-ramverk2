@@ -46,6 +46,18 @@ class Demo extends React.Component {
                             <p> Kika gärna i mitt github repo på /src/chat.js för exempel hur det kan se ut.</p>
                         </div>
                     </ClickShow>
+                    <ClickShow style={{textAlign: "left"}}title={"Databas"}>
+                        <div style={{textAlign: "left"}}>
+                            <p> Jag kommer att använda MongoDB, mest för att det är ett väldigt populär
+                            val för NoSQL-databas </p>
+
+                            <p> Jag kommer använda Docker för utvecklingsmiljö, då jag under kmom05 märkte at
+                            det är riktigt smidigt.</p>
+
+                            <p> Jag har lagt upp en bra bas i min redovisa-sida för tester för MongoDB.
+                            Så planen är att använda mig av TDD i projektet.</p>
+                        </div>
+                    </ClickShow>
                 </div>
             </div>
         );
