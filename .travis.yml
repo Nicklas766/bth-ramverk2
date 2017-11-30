@@ -13,8 +13,5 @@ sudo: false
 git:
     submodules: false
 
-before_script:
-    - make install
-
 script:
-    - make test
+    - npm test
