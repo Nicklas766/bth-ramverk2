@@ -4,6 +4,7 @@ filter:
 build:
     environment:
         mongodb: '3.2'
+        node: v8.9.1
     tests:
         override:
             -
