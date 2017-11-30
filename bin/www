@@ -17,10 +17,9 @@ const { socketChat }  = require('../src/chat');
 
 
 
-const port = process.env.DBWEBB_PORT || 1337;
+port = process.env.DBWEBB_PORT || 1337;
 
 if ('DBWEBB_PORT' in process.env) {
-    port = process.env.DBWEBB_PORT;
     console.log(`DBWEBB_PORT set, using ${process.env.DBWEBB_PORT}`);
 }
 
