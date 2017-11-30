@@ -76,6 +76,18 @@ router.post("/delete", async (req, res) => {
     }
 });
 
+// Delete an object in the collection and return new
+router.get("/reset", async (req, res) => {
+    try {
+        const data = await db.reset();
+
+        res.json(data);
+    }    catch (err) {
+        console.log(err);
+        res.json(err);
+    }
+});
+
 
 
 

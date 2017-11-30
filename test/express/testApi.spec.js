@@ -22,17 +22,17 @@ describe('Check routes', function() {
             });
     });
 
-    it('tests report route', function(done) {
-        request(app).get('/api/report')
-            .set('Accept', 'application/json')
-            .expect(200)
-            .then((response) => {
-                assert(response.body[0].name == 'kmom01', 'kmom01');
-                assert(response.body[1].name == 'kmom02', 'kmom02');
-                assert(response.body[2].name == 'kmom03', 'kmom03');
-                done();
-            });
-    });
+    // it('tests report route', function(done) {
+    //     request(app).get('/api/report')
+    //         .set('Accept', 'application/json')
+    //         .expect(200)
+    //         .then((response) => {
+    //             assert(response.body[0].name == 'kmom01', 'kmom01');
+    //             assert(response.body[1].name == 'kmom02', 'kmom02');
+    //             assert(response.body[2].name == 'kmom03', 'kmom03');
+    //             done();
+    //         });
+    // });
     // // gives timeout error
     // it('should return kmom05', function(done) {
     //     request(app).get('/api/report/5')

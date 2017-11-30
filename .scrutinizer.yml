@@ -2,6 +2,8 @@ filter:
     excluded_paths: [client/public/*]
 
 build:
+    environment:
+        mongodb: '3.2'
     tests:
         override:
             -

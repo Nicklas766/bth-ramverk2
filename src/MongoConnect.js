@@ -53,6 +53,14 @@ const mongoConnect = (dsn, collection) => {
             const col = await connect();
 
             return col.remove({ _id: ObjectId(id) });
+        },
+
+        async reset() {
+            const col = await connect();
+            await col.deleteMany({});
+            await col.insert({name: "Jason Mraz", wikipedia: "wikipedia", youtube:"youtube"});
+
+            return col.find({}).toArray();
         }
     };
     // await db.close();

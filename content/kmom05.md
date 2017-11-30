@@ -49,7 +49,7 @@ En asynkronsk funktion kommer alltid returnera ett löfte (promise). När vi lä
 
 
 
-
+kunde ej tro mina ögon när jag insåg att jag fick till det med mongoDB-testerna
 
 
 En fråga angående ditt exempel. Symboliserar variablen `res`, response eller result i detta fall? Det logiska är väl result/data, då vi gör en await på `findInCollection` så blir det ju ett `resolved promise`. Funderar då jag själv brukar använda `res` istället för `response`.
@@ -62,5 +62,8 @@ riktigt trevligt.
 
 
 Min docker blev full ofta, jag fick tömma den ibland.
+
+Det strular jättemycket ibland lokalt, så jag väljer nu att köra allt via docker,
+först startas min mongodb sedan servern och därefter görs testerna.
 
 https://stackoverflow.com/questions/31909979/docker-machine-no-space-left-on-device

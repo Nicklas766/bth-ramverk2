@@ -27,3 +27,7 @@ $ cd bth-ramverk2
 $ npm install
 $ npm start
 ```
+
+## testing
+
+You'll need to use testing
