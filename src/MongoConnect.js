@@ -59,7 +59,16 @@ const mongoConnect = (dsn, collection) => {
             const col = await connect();
 
             await col.deleteMany({});
-            await col.insert({name: "Jason Mraz", wikipedia: "wikipedia", youtube: "youtube"});
+            await col.insert({
+                name: "Jason Mraz",
+                wikipedia: "https://sv.wikipedia.org/wiki/Jason_Mraz",
+                youtube: "https://www.youtube.com/watch?v=bcQwIxRcaYs"
+            });
+            await col.insert({
+                name: "Veronica Maggio",
+                wikipedia: "https://sv.wikipedia.org/wiki/Veronica_Maggio",
+                youtube: "https://www.youtube.com/watch?v=sYMByMHwPRI"
+            });
 
             return col.find({}).toArray();
         },

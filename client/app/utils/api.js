@@ -35,6 +35,11 @@ module.exports = {
     },
     updatePerson: function (params) {
         axios.post("/mongodb/update", params);
+    },
+
+    resetPeople: async function () {
+        const data = await axios.get("/mongodb/reset")
+        return data.data;
     }
 };
 

@@ -1,6 +1,6 @@
 var React = require('react');
 var api = require('../../utils/api');
-
+var Link = require('react-router-dom').Link;
 
 class Person extends React.Component {
     constructor(props) {
@@ -43,14 +43,17 @@ class Person extends React.Component {
         return (
             <div>
                 {! this.state.edit &&
-                    <div>
-                        <p> {name} </p>
-                        <p> {id} </p>
+                    <div className="artist">
+                        <p> id: {id} </p>
+                        <p> Name: {name} </p>
+                        <p><Link to={wikipedia} target={"_blank"} className="widget">{wikipedia}</Link></p>
+                        <p><Link to={youtube} target={"_blank"} className="widget">{youtube}</Link></p>
+
                         <button onClick={this.deleteMe}> Delete me :( </button>
                         <button onClick={this.editMe}> Edit me :) </button>
                     </div> }
                 {this.state.edit &&
-                    <div>
+                    <div className="artist">
                         <input name={"name"} value={this.state.name} onChange={this.handleInputChange} placeholder={"Name"}/>
                         <input name={"wikipedia"} value={this.state.wikipedia} onChange={this.handleInputChange} placeholder={"wikipedia"}/>
                         <input name={"youtube"} value={this.state.youtube} onChange={this.handleInputChange} placeholder={"youtube"}/>

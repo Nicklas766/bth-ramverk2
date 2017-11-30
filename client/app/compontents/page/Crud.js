@@ -5,9 +5,7 @@ import Person from "./Person";
 
 const People = (props) => {
     const people = props.people.map(person =>
-        <div key={person._id} style={{background: "black", border:"2px solid blue"}}>
-            <Person deleteMe={props.onDelete} stats={person} />
-        </div>
+        <Person key={person._id} deleteMe={props.onDelete} stats={person} />
      );
     return (
         <div>
@@ -26,8 +24,9 @@ class Crud extends React.Component {
           people: []
       };
       this.handleInputChange = this.handleInputChange.bind(this);
-      this.createPerson = this.createPerson.bind(this);
-      this.deletePerson = this.deletePerson.bind(this);
+      this.createPerson      = this.createPerson.bind(this);
+      this.deletePerson      = this.deletePerson.bind(this);
+      this.resetPeople       = this.resetPeople.bind(this);
     }
 
     componentDidMount() {
@@ -56,20 +55,30 @@ class Crud extends React.Component {
          this.setState({ people: people });
     }
 
+    async resetPeople() {
+         const people = await api.resetPeople();
+         this.setState({ people: people });
+    }
+
     handleInputChange(event) {
         this.setState({[event.target.name]: event.target.value});
     }
 
     render() {
         return (
-            <div>
-                <h1>Crud, hello world!</h1>
-                {!this.state.loading ? <People onDelete={this.deletePerson} people={this.state.people} /> : <div className="loader">Loading...</div>}
+            <div className="crud-container">
+                <div className="crud-form">
+                    <h1>CRUD for artists collection</h1>
                     <input name={"name"} value={this.state.name} onChange={this.handleInputChange} placeholder={"Name"}/>
                     <input name={"wikipedia"} value={this.state.wikipedia} onChange={this.handleInputChange} placeholder={"wikipedia"}/>
                     <input name={"youtube"} value={this.state.youtube} onChange={this.handleInputChange} placeholder={"youtube"}/>
                     <button onClick={this.createPerson}>Create person</button>
+                    <button onClick={this.resetPeople}>Reset Database</button>
+                </div>
 
+                <div style={{width: "40%"}} >
+                    {!this.state.loading ? <People onDelete={this.deletePerson} people={this.state.people} /> : <div className="loader">Loading...</div>}
+                </div>
             </div>
         );
     }
