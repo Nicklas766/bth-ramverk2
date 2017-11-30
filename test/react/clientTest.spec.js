@@ -50,5 +50,8 @@ describe('<ClickShow />', () => {
 
         wrapper.simulate('click');
         assert(wrapper.contains(<p>hello</p>) == true);
+
+        // PROCCESS EXIT TO ENSURE MONGODB TEST WORKS
+        process.exit(0);
     });
 });

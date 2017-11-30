@@ -57,10 +57,17 @@ const mongoConnect = (dsn, collection) => {
 
         async reset() {
             const col = await connect();
+
             await col.deleteMany({});
-            await col.insert({name: "Jason Mraz", wikipedia: "wikipedia", youtube:"youtube"});
+            await col.insert({name: "Jason Mraz", wikipedia: "wikipedia", youtube: "youtube"});
 
             return col.find({}).toArray();
+        },
+
+        async close() {
+            const db  = await mongo.connect(dsn);
+
+            await db.close();
         }
     };
     // await db.close();

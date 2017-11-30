@@ -23,18 +23,13 @@ var assert = require('assert');
 // console.log(wrapper.debug());
 
 describe('try out the fetch', function() {
-
-
-    it('should return empty array', function(done) {
+    it('should return array which contains array[0].name Jason Mraz', function(done) {
         request(app).get("/mongodb/reset")
             .set('Accept', 'application/json')
             .expect(200)
             .then(function (res) {
-                assert(res.body[1].name == "Jason Mraz")
+                assert(res.body[0].name == "Jason Mraz");
                 done();
-              }).catch(done);
-
+            }).catch(done);
     });
-
-
 });
