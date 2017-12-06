@@ -14,7 +14,7 @@ const getUser = (id) => this.users.filter(user => id == user.id)[0];
 */
 const updateUser = (obj, socket) => {
     this.users = this.users.map(user =>
-    socket.id == user.id ? Object.assign(user, obj) : user);
+        socket.id == user.id ? Object.assign(user, obj) : user);
     this.io.emit('get users', this.users);
 };
 
