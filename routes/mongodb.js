@@ -10,7 +10,8 @@ const express = require("express");
 var router = express.Router();
 
 // Connect to database with mongoConnect
-const db = require('../src/MongoConnect.js').mongoConnect(dsn, 'artists');
+// const db = require('../src/MongoConnect.js').mongoConnect(dsn, 'artists');
+const db = require('mongo-connecter').connect(dsn, 'artists');
 
 
 // Return a JSON object with list of all documents within the collection.

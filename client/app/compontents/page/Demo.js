@@ -58,6 +58,17 @@ class Demo extends React.Component {
                             Så planen är att använda mig av TDD i projektet.</p>
                         </div>
                     </ClickShow>
+                    <ClickShow style={{textAlign: "left"}}title={"NPM-module"}>
+                        <div style={{textAlign: "left"}}>
+                            <p> Modulen låter en connecta till sin MongoDB med ett litet API</p>
+
+                            <Link to={"https://www.npmjs.com/package/mongo-connecter"} target={"_blank"} className="widget">
+                                <p> Länk till npm-modulen (där finns även readme.md) </p>
+                            </Link>
+
+
+                        </div>
+                    </ClickShow>
                 </div>
             </div>
         );

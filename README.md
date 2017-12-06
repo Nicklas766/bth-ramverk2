@@ -18,6 +18,8 @@ This project uses the following,
 * Socket.io
 * Mocha
 * Docker
+* [Mongo-Connecter](https://www.npmjs.com/package/mongo-connecter) (my own npm module, nothing advanced just an exercise)
+
 
 For more dependencies please checkout the `package.json`
 
@@ -35,23 +37,40 @@ $ cd bth-ramverk2
 
 ```
 // This will setup in the following order, mongodb, express-server, test.
-$ docker-compose -up -d
+$ npm run docker-build-start
 ```
 
 **Only testing**:
 ```
 // This will only start the test
-$ docker-compose -up test
+$ npm run docker-build-start test
 ```
 
+**Client**:
+Since the express-server uses a `bundle.js` we can't update our code in realtime.
+We can fix that however to avoid slow and annyoing restarts,
+```
+// Open a new terminal or use your current
+$ cd client
+// Edit the webpack.config.js and make sure the proxy is the same adress
+// as your docker-container which contains the server
+$ npm start
+```
 
 **Note**: If you want to use another port, you can easily edit the ports in
 `docker-compose.yml` to your preference.
 
-**Note**: MongoDB and express-server needs to be running.
+**Note**:
+To connect the server with the mongodb we use `DBWEBB_DSN`, you can edit this if you'd like.
+```
+environment:
+    - DBWEBB_DSN=mongodb://mongodb:27017/people
+```
 
+**Note**: MongoDB and express-server needs to be running if you only want to start
+the test.
 
-## Setup & testing without Docker (Not recommended)
+## Setup & testing without Docker (Recommended for production)
 
 **You can setup your own very quickly, just do the following**:
 
@@ -62,6 +81,9 @@ $ npm start
 
 **Note**: You will need to install [MongoDB](https://docs.mongodb.com/manual/installation/) on your own. Then make sure
 the database is started before doing `npm start`
+
+**Note**: You can set `env DBWEBB_PORT` to which port you prefer before `npm start`,
+if you want to run on another port.
 
 **Testing**:
 
