@@ -82,8 +82,6 @@ router.get("/reset", async (req, res) => {
     try {
         const data = await db.reset();
 
-        await db.close();
-
         res.json(data);
     }    catch (err) {
         console.log(err);
